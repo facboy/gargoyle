@@ -47,8 +47,8 @@ fi
 EXPIRATION_MAX=99999
 if [ "$TIME_BITS" -lt 64 ] ; then
 	#handle 2038 bug the best we can
-	year=$(date +%Y)
-	year_day=$(date +%j)
+	year=$(expr `date +%Y` + 0)
+	year_day=$(expr `date +%j` + 0)
 	EXPIRATION_MAX=$(( (365*(2038-$year)) - $year_day  ))
 fi
 
